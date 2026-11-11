@@ -1,0 +1,27 @@
+{
+  "name": "qso-globe",
+  "version": "1.0.0",
+  "description": "A slowly turning 3D globe of the stations you have worked, for QRZ.com bio pages and any web page",
+  "scripts": {
+    "sample": "node scripts/sample-data.mjs",
+    "build": "node scripts/build.mjs",
+    "import": "node scripts/import.mjs",
+    "render": "node scripts/render-gif.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "keywords": [],
+  "author": "Paul Friend",
+  "license": "Apache-2.0",
+  "type": "module",
+  "dependencies": {
+    "d3-geo": "^3.1.2",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "gifenc": "^1.0.3",
+    "playwright-core": "^1.65.0",
+    "pngjs": "^7.0.0"
+  }
+}

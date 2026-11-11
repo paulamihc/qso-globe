@@ -1,0 +1,6 @@
+{
+  "callsign": "N0CALL",
+  "locator": "JO01",
+  "title": "Stations worked",
+  "qrzLogbook": "Set QRZ_LOGBOOK_KEY in .env or as a CI secret; never put the key in this file."
+}

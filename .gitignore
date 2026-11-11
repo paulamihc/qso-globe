@@ -1,0 +1,9 @@
+node_modules/
+.env
+out/
+*.adi
+*.adif
+site/contacts.json
+site/globe.js
+site/qso-globe.*
+PLAN.md

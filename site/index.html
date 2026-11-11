@@ -1,0 +1,25 @@
+<!doctype html>
+<!-- QSO Globe · Copyright 2026 Paul Friend · Apache License 2.0 -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QSO Globe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="stage">
+  <canvas id="globe" aria-label="Globe of stations worked"></canvas>
+  <header class="top">
+    <div class="id"><span id="call"></span><span id="sub"></span></div>
+    <div id="legend" class="legend" aria-label="Band colours"></div>
+  </header>
+  <footer class="bottom">
+    <div id="stats" class="stats"></div>
+    <div class="foot"><span id="updated"></span><span class="hint">Drag to turn · tap a pin</span></div>
+  </footer>
+  <div id="tip" class="tip" hidden></div>
+</main>
+<script type="module" src="globe.js"></script>
+</body>
+</html>

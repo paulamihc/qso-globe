@@ -1,0 +1,31 @@
+# Rebuilds the globe from the QRZ logbook once a day and publishes it to GitHub Pages.
+# Needs a repository secret QRZ_LOGBOOK_KEY (Settings > Secrets and variables > Actions).
+# The key is used only on GitHub's build machine; it is never written into the published site.
+name: Refresh globe
+on:
+  schedule: [{ cron: '17 4 * * *' }]
+  workflow_dispatch: {}
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Fetch contacts from QRZ
+        env: { QRZ_LOGBOOK_KEY: '${{ secrets.QRZ_LOGBOOK_KEY }}' }
+        run: node scripts/import.mjs --qrz
+      - run: node scripts/build.mjs
+      - name: Render the animated image for the QRZ bio
+        run: node scripts/render-gif.mjs --size 360x405 --frames 75 --delay 200 --colours 64 --out site/qso-globe.gif
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages }
+    steps:
+      - uses: actions/deploy-pages@v4
