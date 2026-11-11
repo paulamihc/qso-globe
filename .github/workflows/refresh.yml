@@ -20,7 +20,7 @@ jobs:
         run: node scripts/import.mjs --qrz
       - run: node scripts/build.mjs
       - name: Render the animated image for the QRZ bio
-        run: node scripts/render-gif.mjs --size 360x405 --frames 75 --delay 200 --colours 64 --out site/qso-globe.gif
+        run: node scripts/render-gif.mjs --out site/qso-globe.gif
       - uses: actions/upload-pages-artifact@v3
         with: { path: site }
   deploy:

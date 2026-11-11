@@ -20,7 +20,7 @@ node scripts/serve.mjs                  # preview at http://localhost:5178/
 node scripts/render-gif.mjs             # writes out/qso-globe.gif and a still PNG
 ```
 
-`render-gif.mjs` drives Google Chrome headless. Options: `--size 460x520 --frames 120 --delay 125 --colours 160 --colour band|mode`.
+`render-gif.mjs` drives Google Chrome headless. Defaults suit QRZ: 360×405, 100 frames, one turn every 25 seconds, about 0.9 MB. Options: `--size --frames --delay --colours --colour band|mode`.
 
 ## Your contacts
 
@@ -35,7 +35,7 @@ Locations come from the grid square first, then lat/lon, then the centre of the 
 | --- | --- |
 | `data=URL` | Load contacts from another file, so one host can serve many stations |
 | `colour=mode` | Colour pins by mode instead of band |
-| `turn=30` | Seconds per turn (default 15) |
+| `turn=40` | Seconds per turn (default 25) |
 
 ## On a QRZ.com bio
 
@@ -54,7 +54,7 @@ QRZ bios strip scripts. They only allow iframes from QRZ's approved list, and im
 
    Use the short form `/hampages/yourcall/qso-globe.gif` (callsign in lower case) for `QRZ_IMAGE_URL`. QRZ puts its own address in front of whatever you give it, so a full `https://…` address ends up broken.
 3. Save, then view the page; QRZ doesn't show it while you're editing. To update it, upload a new GIF with the same file name.
-4. QRZ's file upload refused a 2.85 MB GIF but took 0.86 MB. Render with `--size 360x405 --frames 75 --delay 200 --colours 64` to stay under the limit.
+4. QRZ's file upload refused a 2.85 MB GIF but took 0.86 MB; the default settings stay around that size.
 
 If QRZ ever approves the page for iframes, this embeds the live globe directly:
 

@@ -3,7 +3,7 @@
 // Renders one seamless full turn of the globe to an animated GIF (and a still PNG),
 // for pages such as QRZ.com bios that allow images but not scripts.
 //
-// Usage: node scripts/render-gif.mjs [--size 460x520] [--frames 120] [--delay 125] [--colours 160] [--out out/qso-globe.gif]
+// Usage: node scripts/render-gif.mjs [--size 360x405] [--frames 100] [--delay 250] [--colours 40] [--out out/qso-globe.gif]
 // Needs Google Chrome installed (it drives it headless), and site/ built and holding contacts.json.
 import { chromium } from 'playwright-core';
 import gifenc from 'gifenc';
@@ -17,12 +17,12 @@ const arg = (name, def) => {
   const i = process.argv.indexOf(`--${name}`);
   return i > 0 ? process.argv[i + 1] : def;
 };
-const [W, H] = arg('size', '460x520').split('x').map(Number);
-const FRAMES = +arg('frames', 120);
-const DELAY = +arg('delay', 125);
+const [W, H] = arg('size', '360x405').split('x').map(Number);
+const FRAMES = +arg('frames', 100);
+const DELAY = +arg('delay', 250);
 const OUT = arg('out', 'out/qso-globe.gif');
 const COLOUR = arg('colour', 'band');
-const COLOURS = Math.min(255, +arg('colours', 160));
+const COLOURS = Math.min(255, +arg('colours', 40));
 
 // Serve site/ on a private port for the headless browser.
 const root = new URL('../site/', import.meta.url).pathname;

@@ -10,7 +10,7 @@ import { gridToLatLon, distanceKm, roughContinent } from './geo.js';
 const params = new URLSearchParams(location.search);
 const RENDER = params.has('render');                 // headless frame rendering for the animated image
 const DATA_URL = params.get('data') || 'contacts.json';
-const TURN_SECONDS = +params.get('turn') || 15;      // seconds per full turn
+const TURN_SECONDS = +params.get('turn') || 25;      // seconds per full turn
 const COLOUR_BY = params.get('colour') === 'mode' ? 'mode' : 'band';
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
